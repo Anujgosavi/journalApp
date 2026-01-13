@@ -9,8 +9,6 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Document(collection = "journal_entries")
-@Getter
-@Setter
 @Data  //  all methods
 @NoArgsConstructor //
 public class journalEntry {

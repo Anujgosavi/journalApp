@@ -13,7 +13,7 @@ public class MongoConfig {
     @Bean
     public MongoDatabaseFactory mongoDatabaseFactory() {
         return new SimpleMongoClientDatabaseFactory(
-                MongoClients.create("mongodb://localhost:27017"),
+                MongoClients.create("mongodb+srv://anujSpringBoot:Anuj2005@cluster0.pll7bh0.mongodb.net/?appName=Cluster0"),
                 "journaldb"
         );
     }
