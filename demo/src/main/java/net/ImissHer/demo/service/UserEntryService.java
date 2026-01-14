@@ -5,9 +5,13 @@ import net.ImissHer.demo.entity.journalEntry;
 import net.ImissHer.demo.repo.JournalEntryRepository;
 import net.ImissHer.demo.repo.UserEntryRepository;
 import org.bson.types.ObjectId;
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +21,16 @@ public class UserEntryService {
     @Autowired
     private UserEntryRepository userEntryRepository ; // dependency injection
 
+    public static final PasswordEncoder  passwordencoder = new BCryptPasswordEncoder( );
+
     public void saveEntry(User user){
+        user.setPassword(passwordencoder.encode(user.getPassword()));
+        user.setRoles(Arrays.asList("User"));
+        userEntryRepository.save(user);
+    }
+
+    public void saveNewUser(User user){
+
         userEntryRepository.save(user);
     }
     public List<User> getAll(){

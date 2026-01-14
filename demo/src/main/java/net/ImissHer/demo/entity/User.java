@@ -28,7 +28,8 @@ public class User {
     private String password ;
 
       @DBRef //  will contain the reference of journal entries kinda like foreign key
-    private List<journalEntry> journalEntries  = new ArrayList<>();
+      private List<journalEntry> journalEntries  = new ArrayList<>();
+      private List<String> Roles ;
 
 
 

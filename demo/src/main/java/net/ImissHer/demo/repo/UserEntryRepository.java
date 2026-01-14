@@ -9,7 +9,11 @@ public interface UserEntryRepository extends MongoRepository<User, ObjectId> {
 
   User findByUserName(String username);
 
+  void deleteByUserName(String name) ;
+
 }
+
+
 
 
 //  controller --> service -->> repository
