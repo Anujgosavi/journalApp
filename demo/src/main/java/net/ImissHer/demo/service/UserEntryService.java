@@ -51,6 +51,15 @@ public class UserEntryService {
       return userEntryRepository.findByUserName(username) ;
     }
 
+    public void saveAdmin(User user) {
+        String rawPassword = user.getPassword();
+        if (rawPassword != null && !rawPassword.startsWith("$2a$")) {
+            user.setPassword(passwordEncoder.encode(rawPassword));
+        }
+        // Store both roles as they should appear in database
+        user.setRoles(Arrays.asList("USER", "ADMIN"));
+        userEntryRepository.save(user);
+    }
 }
 
 
