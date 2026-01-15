@@ -50,9 +50,14 @@ public class UserEntryController {
        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/delete")
     ResponseEntity<?> deleteUser(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication() ;
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+
+        String username = authentication.getName();
+        System.out.println("Deleting user: " + username);
+
 
         userEntryRepository.deleteByUserName(authentication.getName());
 

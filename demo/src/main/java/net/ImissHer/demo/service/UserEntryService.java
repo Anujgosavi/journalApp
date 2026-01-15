@@ -21,18 +21,20 @@ public class UserEntryService {
     @Autowired
     private UserEntryRepository userEntryRepository ; // dependency injection
 
-    public static final PasswordEncoder  passwordencoder = new BCryptPasswordEncoder( );
+    @Autowired
+    private PasswordEncoder passwordEncoder; // Autowire the bean
 
     public void saveEntry(User user){
-        user.setPassword(passwordencoder.encode(user.getPassword()));
-        user.setRoles(Arrays.asList("User"));
+        // Only encode if password is not already encoded
+        String rawPassword = user.getPassword();
+        if (rawPassword != null && !rawPassword.startsWith("$2a$")) { // BCrypt hash starts with $2a$
+            user.setPassword(passwordEncoder.encode(rawPassword));
+        }
+        user.setRoles(Arrays.asList("USER"));
         userEntryRepository.save(user);
     }
 
-    public void saveNewUser(User user){
 
-        userEntryRepository.save(user);
-    }
     public List<User> getAll(){
         return userEntryRepository.findAll() ;
     }
