@@ -31,7 +31,12 @@ public class AdminController {
 
     @PostMapping("/creating-admin-user")
     public void addUsers(@RequestBody User user) {
-        userEntryService.saveAdmin(user);
+        try {
+            userEntryService.saveAdmin(user);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 }
