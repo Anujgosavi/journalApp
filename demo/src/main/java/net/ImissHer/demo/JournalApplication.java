@@ -10,6 +10,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableTransactionManagement //  meaning enable all method who could be transactional code
@@ -22,6 +23,12 @@ public class JournalApplication {
 	   @Bean
 	public PlatformTransactionManager add(MongoDatabaseFactory  dbFactory ){
 		return new MongoTransactionManager(dbFactory) ;
+	}
+
+
+	@Bean
+	public RestTemplate restTemplate (){
+		return new RestTemplate() ;
 	}
 
 }

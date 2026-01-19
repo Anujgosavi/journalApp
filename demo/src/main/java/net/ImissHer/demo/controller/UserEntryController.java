@@ -1,10 +1,12 @@
 package net.ImissHer.demo.controller;
 
+import net.ImissHer.demo.WeatherResponse.WeatherResp;
 import net.ImissHer.demo.entity.User;
 import net.ImissHer.demo.entity.journalEntry;
 import net.ImissHer.demo.repo.UserEntryRepository;
 import net.ImissHer.demo.service.JournalEntryService;
 import net.ImissHer.demo.service.UserEntryService;
+import net.ImissHer.demo.service.WeatherService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -27,7 +29,13 @@ public class UserEntryController {
      UserEntryService userService ;
 
      @Autowired
+    WeatherService weatherService ;
+
+     @Autowired
      private  UserEntryRepository userEntryRepository ;
+
+     @Autowired
+     private WeatherResp weatherResp ;
 
      @GetMapping("")
      public List<User> getAllUser(){
@@ -63,6 +71,13 @@ public class UserEntryController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
+    }
+
+    @GetMapping("/w")
+    ResponseEntity<?> greetings(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication() ;
+        WeatherResp res = weatherService.getWeather("Pune") ;
+        return new ResponseEntity("Hii " + authentication.getName() + "feels like " +  res.getWeatherDescription()   , HttpStatus.OK) ;
     }
 }
 
