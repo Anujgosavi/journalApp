@@ -1,27 +1,38 @@
 package net.ImissHer.demo.service;
 
+import jakarta.annotation.PostConstruct;
 import net.ImissHer.demo.WeatherResponse.WeatherResp;
+import net.ImissHer.demo.cache.AppCache;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-@Component
+@Service
 public class WeatherService {
 
-    private static String key = "7250b84fae215ef026c25d7e7cd5bd5a" ;
+        @Value("${weather.api.key}")
+        private String key;
 
-    private static String api = "https://api.openweathermap.org/data/2.5/weather?q=City,IN&units=metric&appid="+key ;
-   @Autowired
-    RestTemplate restTemplate ;
+        @Autowired
+       private RestTemplate restTemplate;
 
-    public WeatherResp getWeather(String city){
-       String finalapi =  api.replace("City" , city) ;
-        ResponseEntity<WeatherResp>  response = restTemplate.exchange(finalapi, HttpMethod.GET, null, WeatherResp.class);
+        @Autowired
+        private  AppCache appCache ;
 
-        return response.getBody() ;
 
+
+        public WeatherResp getWeather(String city) {
+            String finalapi = appCache.APP_CACHE.get("weather.key").replace("CITY", city).replace("KEY" , key);
+            ResponseEntity<WeatherResp> response =
+                    restTemplate.exchange(finalapi, HttpMethod.GET, null, WeatherResp.class);
+            return response.getBody();
+        }
     }
 
-}
+
+
+
+
