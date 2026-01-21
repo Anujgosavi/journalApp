@@ -1,9 +1,6 @@
 package net.ImissHer.demo.entity;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -18,12 +15,15 @@ import java.util.List;
 @Getter
 @Setter
 @Data  //  all methods
+@NoArgsConstructor
 public class User {
     @Id
     private ObjectId id; // kinda like instance of db
     @Indexed(unique = true)
     @NonNull
     private String userName;
+    private String email;
+    private boolean sentimentAnalysis ;
     @NonNull
     private String password ;
 
