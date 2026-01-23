@@ -12,6 +12,21 @@ spring:
       auto-index-creation: true
 
 
+  mail:
+    host : smtp.gmail.com
+    port : 587
+    username : anujgosavi2005@gmail.com
+    password : kaky dfop geat zfea
+    properties:
+       mail :
+          smtp :
+            auth : true
+            starttls :
+              enable : true
+
+
+
+
 server:
   port: 8080
 
