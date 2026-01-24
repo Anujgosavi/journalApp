@@ -1,6 +1,7 @@
 package net.ImissHer.demo.entity;
 
 import lombok.*;
+import net.ImissHer.demo.Enum.Sentiment;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,7 +19,6 @@ public class journalEntry {
     private String title;
     private String content ;
     private LocalDateTime date ;
-
-
+    private Sentiment sentiment;
 
 }

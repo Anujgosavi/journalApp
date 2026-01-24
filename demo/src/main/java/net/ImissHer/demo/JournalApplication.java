@@ -6,6 +6,7 @@ import org.springframework.cglib.proxy.Factory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.data.mongodb.MongoTransactionManager;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -13,7 +14,8 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@EnableTransactionManagement //  meaning enable all method who could be transactional code
+@EnableTransactionManagement
+@EnableScheduling//  meaning enable all method who could be transactional code
 public class JournalApplication {
 
 	public static void main(String[] args) {
