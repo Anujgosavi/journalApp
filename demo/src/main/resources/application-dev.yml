@@ -1,40 +1,79 @@
-#application.yml#spring.data.mongodb.url=mongodb+srv://anujSpringBoot:Anuj2005@cluster0.pll7bh0.mongodb.net/?appName=Cluster0
-#spring.application.name=journalApp
-#spring.data.mongodb.auto-index-creation=true
-
 spring:
   application:
     name: journalApp
 
-
+  # ===============================
+  # Redis Configuration
+  # ===============================
   redis:
     host: localhost
     port: 6379
 
+  # ===============================
+  # MongoDB Configuration
+  # ===============================
   data:
     mongodb:
       uri: mongodb+srv://anujSpringBoot:Anuj2005@cluster0.pll7bh0.mongodb.net/?appName=Cluster0
       auto-index-creation: true
 
-
+  # ===============================
+  # Mail Configuration
+  # ===============================
   mail:
-    host : smtp.gmail.com
-    port : 587
-    username : anujgosavi2005@gmail.com
-    password : kaky dfop geat zfea
+    host: smtp.gmail.com
+    port: 587
+    username: anujgosavi2005@gmail.com
+    password: kaky dfop geat zfea
     properties:
-       mail :
-          smtp :
-            auth : true
-            starttls :
-              enable : true
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
+  # ===============================
+  # Kafka Configuration (Confluent Cloud)
+  # ===============================
+#  kafka:
+#    bootstrap-servers: pkc-9q8rv.ap-south-2.aws.confluent.cloud:9092
+#
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#
+#    consumer:
+#      group-id: weekly-sentiment-group
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringSerializer
+#      auto-offset-reset: earliest
+#      properties:
+#        spring:
+#          json:
+#            trusted:
+#              packages: net.ImissHer.demo
+#
+#    properties:
+#      security:
+#        protocol: SASL_SSL
+#      sasl:
+#        mechanism: PLAIN
+#        jaas:
+#          config: >
+#            org.apache.kafka.common.security.plain.PlainLoginModule required
+#            username="5AHCI4S6NDPLHXR3"
+#            password="cfltJeRraSefdBSq4V+e3OtW1AhN49tG/YkKSfYMj1pVSkqh0cdS+fGDPMvVIw+g";
+#      session:
+#        timeout:
+#          ms: 45000
 
-
-
+# ===============================
+# Server Configuration
+# ===============================
 server:
   port: 8080
 
-
-
+# ===============================
+# External API Keys
+# ===============================
 weather.api.key: 7250b84fae215ef026c25d7e7cd5bd5a
