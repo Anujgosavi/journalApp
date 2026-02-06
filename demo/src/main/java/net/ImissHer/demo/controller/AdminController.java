@@ -1,5 +1,6 @@
 package net.ImissHer.demo.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import net.ImissHer.demo.entity.User;
 import net.ImissHer.demo.service.UserEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
+@Tag(name = "ADMIN APIs" , description = "Only Restricted Access")
 public class AdminController {
 
     @Autowired

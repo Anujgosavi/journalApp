@@ -1,5 +1,6 @@
 package net.ImissHer.demo.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import net.ImissHer.demo.Utils.JwtUtil;
 import net.ImissHer.demo.entity.User;
@@ -21,6 +22,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/public")
+@Tag(name = "PUBLIC APIs" , description = "For login and sign up")
 public class PublicController {
 
 @Autowired

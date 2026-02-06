@@ -1,5 +1,6 @@
 package net.ImissHer.demo.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import net.ImissHer.demo.entity.User;
 import net.ImissHer.demo.entity.journalEntry;
 import net.ImissHer.demo.service.JournalEntryService;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/journal")
+@Tag(name = "Journal APIs" , description = "Insert, Update, Delete Journals")
 public class JornalEntryControllerv2 {
 
     private Map<Long , journalEntry> entries = new HashMap<>() ;

@@ -1,5 +1,6 @@
 package net.ImissHer.demo.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import net.ImissHer.demo.WeatherResponse.WeatherResp;
 import net.ImissHer.demo.entity.User;
 import net.ImissHer.demo.entity.journalEntry;
@@ -24,6 +25,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
+@Tag(name = "User APIs" , description = "Insert, Update, Delete users")
 public class UserEntryController {
      @Autowired
      UserEntryService userService ;
